@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <section className="hero container">
       <div className="hero-text">
-        <h1>안녕하세요, <span className="accent">Your Name</span>입니다.</h1>
+        <h1>안녕하세요, <span className="accent">이정재</span>입니다.</h1>
         <p className="subtitle">프론트엔드 · 사용자 경험 · 사이드 프로젝트를 사랑하는 개발자.</p>
         <div className="cta">
           <a className="btn primary" href="/projects">프로젝트 보기</a>

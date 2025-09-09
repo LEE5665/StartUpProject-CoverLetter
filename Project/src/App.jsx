@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet, NavLink } from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header className="site-header">
+        <nav className="container nav">
+          <a className="logo" href="/">YN</a>
+          <ul className="menu">
+            <li><NavLink to="/" end>소개</NavLink></li>
+            <li><NavLink to="/skills">기술</NavLink></li>
+            <li><NavLink to="/projects">프로젝트</NavLink></li>
+            <li><NavLink to="/contact">연락</NavLink></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <Outlet />
+      </main>
+      <footer className="site-footer">
+        <div className="container">© {new Date().getFullYear()} Your Name</div>
+      </footer>
     </>
-  )
+  );
 }
-
-export default App

@@ -1,42 +1,83 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root{
+  --bg:#0b0e14; --panel:#111623; --text:#e6e9ef; --muted:#9aa4b2;
+  --accent:#6aa9ff; --accent2:#8de1c6; --radius:16px; --container:1100px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Noto Sans KR,Helvetica,Arial;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(138,180,248,.12), transparent 60%),
+              radial-gradient(1200px 600px at 90% 10%, rgba(141,225,198,.10), transparent 60%), var(--bg);
+  color:var(--text); line-height:1.6;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.container{max-width:var(--container);margin:0 auto;padding:0 20px}
+
+/* 헤더 */
+.site-header{
+  position:sticky; top:0;
+  background:linear-gradient(180deg, rgba(11,14,20,.95), rgba(11,14,20,.6));
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,.06); z-index:10;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+.logo{color:var(--text); text-decoration:none; font-weight:800; border:2px solid var(--text); padding:6px 10px; border-radius:12px}
+.menu{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+.menu a{color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px}
+.menu a.active,.menu a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+
+/* 히어로 */
+.hero{display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; padding:80px 0}
+.hero-text h1{margin:0 0 12px; font-size:clamp(28px,5vw,48px); line-height:1.2}
+.subtitle{color:var(--muted); margin:0 0 24px}
+.accent{color:var(--accent2)}
+.cta{display:flex; gap:12px}
+.btn{display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.12); text-decoration:none; color:var(--text); background:var(--panel);
+  transition:transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.btn.primary{background:linear-gradient(135deg, var(--accent), var(--accent2)); border:none; color:#0b0e14; font-weight:700}
+.hero-photo{display:grid; place-items:center}
+.photo-placeholder{
+  width:220px; height:220px; border-radius:50%;
+  background:linear-gradient(135deg, rgba(106,169,255,.25), rgba(141,225,198,.25));
+  border:2px dashed rgba(255,255,255,.25); color:rgba(255,255,255,.75);
+  display:grid; place-items:center; font-weight:700;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* 섹션 공통 */
+.section{padding:56px 0}
+.section h2{font-size:clamp(20px,3.5vw,32px); margin:0 0 16px}
+.tags{display:flex; flex-wrap:wrap; gap:10px}
+.tag{font-size:14px; padding:6px 10px; border:1px solid rgba(255,255,255,.14); border-radius:999px; background:rgba(255,255,255,.04)}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* 프로젝트 카드 */
+.grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.10); border-radius:var(--radius); padding:18px;
+  box-shadow:0 10px 24px rgba(0,0,0,.20)
 }
+.card h3{margin:6px 0 8px}
+.card p{color:var(--muted); margin:0 0 12px}
+.card-actions{display:flex; gap:12px}
+.link{color:var(--accent2); text-decoration:none}
+.link:hover{text-decoration:underline}
 
-.card {
-  padding: 2em;
+/* 연락 */
+.contact-list{display:flex; flex-wrap:wrap; gap:14px; padding:0; margin:10px 0 0; list-style:none}
+.contact-list a{color:var(--text); text-decoration:none}
+.contact-list a:hover{color:var(--accent2); text-decoration:underline}
+
+/* 푸터 */
+.site-footer{border-top:1px solid rgba(255,255,255,.06); padding:24px 0 60px; color:var(--muted)}
+
+/* 반응형 */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr; gap:24px; text-align:center}
+  .cta{justify-content:center}
+  .grid{grid-template-columns:1fr}
 }
-
-.read-the-docs {
-  color: #888;
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important; animation:none!important}
 }

@@ -13,18 +13,23 @@ import Contact from "./pages/Contact";
 import About from './pages/t-About'
 // import Project from './pages/Projects'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: "skills", element: <Skills /> },
+        { path: "projects", element: <Projects /> },
+        { path: "contact", element: <Contact /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: "skills", element: <Skills /> },
-      { path: "projects", element: <Projects /> },
-      { path: "contact", element: <Contact /> },
-    ],
-  },
-])
+    basename: "/StartUpProject-CoverLetter",
+  }
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

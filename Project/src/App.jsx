@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import "./App.css";
 
 export default function App() {
@@ -6,7 +6,7 @@ export default function App() {
     <>
       <header className="site-header">
         <nav className="container nav">
-          <a className="logo" href="/">Home</a>
+          <Link className="logo" to="/">Home</Link>
           <ul className="menu">
             <li><NavLink to="/" end>소개</NavLink></li>
             <li><NavLink to="/skills">기술</NavLink></li>
@@ -15,9 +15,11 @@ export default function App() {
           </ul>
         </nav>
       </header>
+
       <main>
         <Outlet />
       </main>
+
       <footer className="site-footer">
         <div className="container">© {new Date().getFullYear()}</div>
       </footer>

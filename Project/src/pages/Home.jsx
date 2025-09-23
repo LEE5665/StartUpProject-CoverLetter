@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -14,8 +15,8 @@ export default function Home() {
         </p>
 
         <div className="cta">
-          <a className="btn primary" href="/projects">프로젝트 보기</a>
-          <a className="btn" href="/contact">연락하기</a>
+          <Link className="btn primary" to="/projects">프로젝트 보기</Link>
+          <Link className="btn" to="/contact">연락하기</Link>
           <button
             className="btn"
             type="button"
@@ -25,7 +26,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* 항상 DOM에 존재 → max-height 트랜지션으로 부드럽게 열고 닫기 */}
         <div className={`intro-wrapper ${open ? "open" : ""}`}>
           <div className="intro-long">
             <h2>자세한 자기소개</h2>

@@ -1,0 +1,108 @@
+:root {
+  --text: #222;
+  --muted: #555;
+  --accent: #00b894;
+  --accent-hover: #009e76;
+  --border: #dcdcdc;
+  --container: 900px;
+  --radius: 14px;
+}
+
+/* ===== 전체 컨테이너 ===== */
+.contact-container {
+  max-width: var(--container);
+  margin: 80px auto 120px;
+  padding: 60px 50px 80px;
+  text-align: center;
+  color: var(--text);
+  background: #ffffff;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+
+.contact-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ===== 제목 ===== */
+.contact-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+/* ===== 안내 문구 ===== */
+.contact-text {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 36px;
+}
+
+/* ===== 연락 리스트 ===== */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* ===== 링크 버튼 ===== */
+.contact-link {
+  text-decoration: none;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  background: transparent;
+  transition: all 0.25s ease;
+}
+
+.contact-link:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 600px) {
+  .contact-container {
+    padding: 50px 24px 70px;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-link {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+/* ===== 인쇄 시 ===== */
+@media print {
+  .contact-container {
+    border: 1px solid #ccc;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .contact-link {
+    color: var(--accent);
+    border: none;
+    background: none;
+    padding: 0;
+    box-shadow: none;
+  }
+}

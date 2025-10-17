@@ -99,10 +99,20 @@
   height: 190px;
   border-radius: 50%;
   border: 3px solid var(--accent2);
-  object-fit: cover;
-  object-position: center 10%; /* ✅ 세로 기준 아래쪽으로 이동 */
+  background-image: url("/profile.png");
+  background-size: cover;       /* cover or contain 선택 */
+  background-position: 50% 10%; /* 세로 조금 위로 */
+  background-repeat: no-repeat;
+  overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+}
+
+/* background 세팅을 담당하는 클래스 (inline style로 url 넣음) */
+.bg-img {
+  background-size: cover;         /* 컷해서 채움 (cover = 잘라서 채움) */
+  background-position: center 15%;/* 세로 위치를 15% 아래로 맞춤 (원하시면 변경) */
+  background-repeat: no-repeat;
 }
 
 /* ===== 인적사항 ===== */

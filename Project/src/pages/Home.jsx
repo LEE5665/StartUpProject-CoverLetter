@@ -89,7 +89,12 @@ export default function Home() {
 
           {/* 오른쪽: 프로필 사진 */}
           <div className="profile-right">
-            <img src={profile} alt="프로필 사진" className="profile-img" />
+            <div
+              className="profile-img"
+              style={{ backgroundImage: `url(${profile})` }}
+              role="img"
+              aria-label="프로필 사진"
+            ></div>
           </div>
         </div>
 

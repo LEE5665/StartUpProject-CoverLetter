@@ -1,4 +1,5 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 import "./App.css";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       </header>
 
       <main>
+        <ScrollToTop />
         <Outlet />
       </main>
 

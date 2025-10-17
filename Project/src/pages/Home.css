@@ -94,25 +94,32 @@
   justify-content: center;
 }
 
-.profile-img {
+/* ✅ object-fit: cover 대체 */
+.profile-img-wrapper {
   width: 190px;
   height: 190px;
   border-radius: 50%;
-  border: 3px solid var(--accent2);
-  background-image: url("/profile.png");
-  background-size: cover;       /* cover or contain 선택 */
-  background-position: 50% 10%; /* 세로 조금 위로 */
-  background-repeat: no-repeat;
   overflow: hidden;
+  border: 3px solid var(--accent2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+
+  /* 📍 사진 위치 조정 */
+  background-color: #fff; /* 배경색 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* background 세팅을 담당하는 클래스 (inline style로 url 넣음) */
-.bg-img {
-  background-size: cover;         /* 컷해서 채움 (cover = 잘라서 채움) */
-  background-position: center 15%;/* 세로 위치를 15% 아래로 맞춤 (원하시면 변경) */
-  background-repeat: no-repeat;
+.profile-img-wrapper img.horizontal {
+  width: auto;
+  height: 100%;
+}
+
+.profile-img-wrapper img.vertical {
+  width: 100%;
+  height: auto;
+  transform: translateY(8%);
 }
 
 /* ===== 인적사항 ===== */

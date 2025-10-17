@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import profile from "/profile.png";
@@ -7,11 +7,26 @@ import "./Home.css";
 
 export default function Home() {
   const [downloading, setDownloading] = useState(false);
+  const [horizontalImage, setHorizontalImage] = useState(true);
 
+  // ✅ 이미지 비율 감지 (object-fit: cover 대체)
+  useEffect(() => {
+    const image = document.getElementById("profile-img");
+    if (!image) return;
+
+    const detectRatio = (img) => {
+      const { naturalWidth, naturalHeight } = img;
+      setHorizontalImage(naturalWidth >= naturalHeight);
+    };
+
+    if (image.complete) detectRatio(image);
+    else image.onload = () => detectRatio(image);
+  }, []);
+
+  // ✅ PDF 저장
   const handleDownloadPDF = async () => {
     setDownloading(true);
 
-    // PDF용 여백 클래스 추가
     document.querySelectorAll(".pdf-page").forEach((page) =>
       page.classList.add("pdf-export")
     );
@@ -34,7 +49,6 @@ export default function Home() {
 
     pdf.save("이력서.pdf");
 
-    // PDF용 여백 클래스 제거
     document.querySelectorAll(".pdf-page").forEach((page) =>
       page.classList.remove("pdf-export")
     );
@@ -47,7 +61,7 @@ export default function Home() {
       {/* ===== Page 1 ===== */}
       <section className="pdf-page page1 container">
         <div className="profile-area">
-          {/* 왼쪽: 직무 + 이름 + 인적사항 */}
+          {/* 왼쪽: 인적사항 */}
           <div className="profile-left">
             <p className="job-title">성장하는 개발자</p>
             <h1 className="name">이정재</h1>
@@ -87,18 +101,20 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 오른쪽: 프로필 사진 */}
+          {/* 오른쪽: 프로필 이미지 */}
           <div className="profile-right">
-            <div
-              className="profile-img"
-              style={{ backgroundImage: `url(${profile})` }}
-              role="img"
-              aria-label="프로필 사진"
-            ></div>
+            <div className="profile-img-wrapper">
+              <img
+                id="profile-img"
+                src={profile}
+                alt="프로필 사진"
+                className={horizontalImage ? "horizontal" : "vertical"}
+              />
+            </div>
           </div>
         </div>
 
-        {/* 핵심 역량 */}
+        {/* ===== 핵심역량 ===== */}
         <div className="section">
           <h2>핵심역량</h2>
           <hr />
@@ -109,7 +125,7 @@ export default function Home() {
           </ul>
         </div>
 
-        {/* 기술 스택 */}
+        {/* ===== 기술스택 ===== */}
         <div className="section">
           <h2>기술스택</h2>
           <hr />
@@ -124,7 +140,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 학력 */}
+        {/* ===== 학력 ===== */}
         <div className="section">
           <h2>학력</h2>
           <hr />
@@ -137,7 +153,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 자격증 */}
+        {/* ===== 자격증 ===== */}
         <div className="section">
           <h2>자격증</h2>
           <hr />
@@ -163,7 +179,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 병역 */}
+        {/* ===== 병역 ===== */}
         <div className="section">
           <h2>병역</h2>
           <hr />

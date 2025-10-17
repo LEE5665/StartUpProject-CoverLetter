@@ -5,7 +5,7 @@
 ### 1. 제작기간
 > 2025.9.23 ~ 2025.10.18
 ### 2. GITHUB 배포 URL
-> [이동하기]([https://quiz-web.p-e.kr/login](https://lee5665.github.io/StartUpProject-CoverLetter))
+> [이동하기](https://lee5665.github.io/StartUpProject-CoverLetter/)
 
 # 사용 기술
 - React

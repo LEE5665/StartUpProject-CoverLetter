@@ -9,7 +9,7 @@
   --container: 1100px;
 }
 
-/* ===== 기본 세팅 ===== */
+
 * {
   box-sizing: border-box;
 }
@@ -25,14 +25,14 @@ body {
   line-height: 1.6;
 }
 
-/* ===== 공통 컨테이너 ===== */
+
 .layout-container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ===== 헤더 / 내비게이션 ===== */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -49,7 +49,7 @@ body {
   height: 64px;
 }
 
-/* 로고 */
+
 .logo {
   color: var(--text);
   text-decoration: none;
@@ -65,7 +65,7 @@ body {
   color: #fff;
 }
 
-/* 메뉴 */
+
 .menu {
   display: flex;
   gap: 18px;
@@ -89,13 +89,13 @@ body {
   background: rgba(0, 0, 0, 0.05);
 }
 
-/* ===== 메인 ===== */
+
 main {
   min-height: 80vh;
   padding-top: 40px;
 }
 
-/* ===== 푸터 ===== */
+
 .site-footer {
   background: var(--panel);
   border-top: 1px solid rgba(0, 0, 0, 0.08);
@@ -105,7 +105,7 @@ main {
   font-size: 14px;
 }
 
-/* ===== 반응형 ===== */
+
 @media (max-width: 700px) {
   .nav {
     flex-direction: column;

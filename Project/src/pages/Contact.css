@@ -8,7 +8,7 @@
   --radius: 14px;
 }
 
-/* ===== 전체 컨테이너 ===== */
+
 .contact-container {
   max-width: var(--container);
   margin: 80px auto 120px;
@@ -27,7 +27,7 @@
   transform: translateY(-2px);
 }
 
-/* ===== 제목 ===== */
+
 .contact-title {
   font-size: 1.8rem;
   font-weight: 800;
@@ -35,14 +35,14 @@
   margin-bottom: 18px;
 }
 
-/* ===== 안내 문구 ===== */
+
 .contact-text {
   font-size: 1rem;
   color: var(--muted);
   margin-bottom: 36px;
 }
 
-/* ===== 연락 리스트 ===== */
+
 .contact-list {
   list-style: none;
   padding: 0;
@@ -53,7 +53,7 @@
   flex-wrap: wrap;
 }
 
-/* ===== 링크 버튼 ===== */
+
 .contact-link {
   text-decoration: none;
   color: var(--accent);
@@ -74,7 +74,7 @@
   box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
 }
 
-/* ===== 반응형 ===== */
+
 @media (max-width: 600px) {
   .contact-container {
     padding: 50px 24px 70px;
@@ -90,7 +90,7 @@
   }
 }
 
-/* ===== 인쇄 시 ===== */
+
 @media print {
   .contact-container {
     border: 1px solid #ccc;

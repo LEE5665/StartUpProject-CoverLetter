@@ -8,7 +8,7 @@
   --container: 900px;
 }
 
-/* ===== 기본 설정 ===== */
+
 .portfolio p {
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -17,7 +17,7 @@
   margin-bottom: 14px;
 }
 
-/* ===== 페이지 ===== */
+
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -35,7 +35,7 @@
   padding: 25mm 25mm;
 }
 
-/* ===== 제목 ===== */
+
 .page2 h3 {
   font-size: 1.2rem;
   font-weight: 700;
@@ -45,7 +45,7 @@
   letter-spacing: 0.5px;
 }
 
-/* ===== 링크 ===== */
+
 .link {
   color: inherit;
   text-decoration: none;
@@ -58,7 +58,7 @@
   text-decoration: none;
 }
 
-/* ===== 프로필 영역 ===== */
+
 .profile-area {
   display: flex;
   justify-content: space-between;
@@ -94,7 +94,7 @@
   justify-content: center;
 }
 
-/* ✅ object-fit: cover 대체 */
+
 .profile-img-wrapper {
   width: 190px;
   height: 190px;
@@ -103,9 +103,7 @@
   border: 3px solid var(--accent2);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-
-  /* 📍 사진 위치 조정 */
-  background-color: #fff; /* 배경색 */
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,7 +120,7 @@
   transform: translateY(8%);
 }
 
-/* ===== 인적사항 ===== */
+
 .info-table {
   display: flex;
   flex-direction: column;
@@ -153,7 +151,7 @@
   stroke-width: 2.4;
 }
 
-/* ===== 공통 섹션 ===== */
+
 .section {
   margin-bottom: 36px;
 }
@@ -167,7 +165,7 @@
   margin: 4px 0 16px;
 }
 
-/* ===== 핵심역량 ===== */
+
 .core-list {
   list-style: none;
   padding: 0;
@@ -189,7 +187,7 @@
   color: var(--accent2);
 }
 
-/* ===== 기술스택 ===== */
+
 .skill-row {
   display: flex;
   flex-wrap: wrap;
@@ -204,7 +202,7 @@
   font-size: 14px;
 }
 
-/* ===== 3단 표 ===== */
+
 .grid-row {
   display: grid;
   grid-template-columns: 1fr 1.2fr 1.6fr;
@@ -231,28 +229,88 @@
   color: var(--text);
 }
 
-/* ===== 버튼 ===== */
-.pdf-download-btn {
+
+.fab-container {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  padding: 12px 20px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  transition: transform 0.12s ease, box-shadow 0.12s ease;
-  z-index: 100;
-}
-.pdf-download-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column-reverse; /* 위로 펼침 */
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 200;
 }
 
-/* ===== 반응형 ===== */
+
+.fab-main {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 42px;            
+  width: 90px;             
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab-main:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+.fab-options {
+  position: absolute;
+  bottom: 60px; 
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+}
+
+
+.fab-container.open .fab-options {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+
+.fab-options button {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: 42px;           
+  width: 90px;            
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s ease;
+}
+
+.fab-options button:hover {
+  background: #f7f7f7;
+  transform: translateY(-1px);
+}
+
+
+
 @media (max-width: 800px) {
   .profile-area {
     flex-direction: column;
@@ -268,9 +326,9 @@
   }
 }
 
-/* ===== 인쇄 ===== */
+
 @media print {
-  .pdf-download-btn,
+  .fab-container,
   .site-header,
   .site-footer {
     display: none !important;

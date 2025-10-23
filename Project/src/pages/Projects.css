@@ -8,15 +8,16 @@
   --container: 900px;
 }
 
+
 .projects-container p {
-  word-break: keep-all;          /* 한글 단어 중간에서 줄 안바꿈 */
-  overflow-wrap: break-word;     /* 영어/URL은 필요 시 줄바꿈 */
-  text-align: justify;           /* 양쪽 정렬 */
-  line-height: 1.7;              /* 줄간격 살짝 넓게 */
-  margin-bottom: 12px;           /* 문단 간격 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: justify;
+  line-height: 1.7;
+  margin-bottom: 12px;
 }
 
-/* ===== 전체 컨테이너 ===== */
+
 .projects-container {
   max-width: var(--container);
   margin: 0 auto;
@@ -24,11 +25,10 @@
   color: var(--text);
 }
 
-/* ===== 섹션 ===== */
+
 .projects-section {
   margin-bottom: 60px;
 }
-
 .projects-section h2 {
   font-size: 1.4rem;
   font-weight: 700;
@@ -37,14 +37,14 @@
   padding-left: 10px;
 }
 
-/* ===== 프로젝트 그리드 ===== */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 28px;
 }
 
-/* ===== 카드 ===== */
+
 .projects-card {
   background: #fff;
   border-radius: var(--radius);
@@ -56,19 +56,40 @@
   transition: all 0.2s ease;
   border: 1px solid #e3e3e3;
 }
-
 .projects-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   border-color: var(--accent2);
 }
 
+
+.projects-thumb {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.projects-card:hover .projects-thumb img {
+  transform: scale(1.05);
+}
+
+
 .projects-card h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
   color: var(--accent2);
 }
-
 .projects-card p {
   font-size: 0.95rem;
   line-height: 1.55;
@@ -76,7 +97,20 @@
   margin-bottom: 16px;
 }
 
-/* ===== 태그 ===== */
+
+.projects-role {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin-top: 4px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.projects-role strong {
+  color: var(--accent2);
+  font-weight: 700;
+}
+
+
 .projects-tags {
   display: flex;
   flex-wrap: wrap;
@@ -84,7 +118,6 @@
   margin-top: auto;
   margin-bottom: 10px;
 }
-
 .projects-tag {
   background: #eef9f3;
   border: 1px solid #b7e4c7;
@@ -95,12 +128,11 @@
   font-weight: 600;
 }
 
-/* ===== 카드 하단 링크 ===== */
+
 .projects-card-actions {
   display: flex;
   justify-content: flex-end;
 }
-
 .projects-link {
   text-decoration: none;
   color: #fff;
@@ -111,33 +143,30 @@
   font-weight: 600;
   transition: background 0.2s ease;
 }
-
 .projects-link:hover {
   background: #009e76;
 }
 
-/* ===== 반응형 ===== */
+
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-
   .projects-card {
     padding: 20px;
   }
-
   .projects-section h2 {
     font-size: 1.2rem;
   }
 }
 
-/* ===== 인쇄 시 (PDF용) ===== */
+
 @media print {
-  .projects-card {
-    box-shadow: none !important;
-    border: 1px solid #ccc;
-  }
   .projects-link {
     display: none !important;
+  }
+  .projects-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
   }
 }

@@ -6,10 +6,10 @@ import { FiMail, FiPhone, FiMapPin, FiGithub } from "react-icons/fi";
 import "./Home.css";
 
 export default function Home() {
-  const [downloading, setDownloading] = useState(false);
+  const [processing, setProcessing] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const [horizontalImage, setHorizontalImage] = useState(true);
 
-  // ✅ 이미지 비율 감지 (object-fit: cover 대체)
   useEffect(() => {
     const image = document.getElementById("profile-img");
     if (!image) return;
@@ -23,14 +23,10 @@ export default function Home() {
     else image.onload = () => detectRatio(image);
   }, []);
 
-  // ✅ PDF 저장
-  const handleDownloadPDF = async () => {
-    setDownloading(true);
-
+  const generatePDF = async () => {
     document.querySelectorAll(".pdf-page").forEach((page) =>
       page.classList.add("pdf-export")
     );
-
     const pages = document.querySelectorAll(".pdf-page");
     const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
 
@@ -47,23 +43,38 @@ export default function Home() {
       pdf.addImage(imgData, "PNG", 0, 0, pageWidth, imgHeight);
     }
 
-    pdf.save("이력서.pdf");
-
     document.querySelectorAll(".pdf-page").forEach((page) =>
       page.classList.remove("pdf-export")
     );
 
-    setDownloading(false);
+    return pdf;
+  };
+
+  const handleSavePDF = async () => {
+    setShowMenu(false);
+    setProcessing(true);
+    const pdf = await generatePDF();
+    pdf.save("이정재_이력서_포트폴리오.pdf");
+    setProcessing(false);
+  };
+
+  const handlePrintPDF = async () => {
+    setShowMenu(false);
+    setProcessing(true);
+    const pdf = await generatePDF();
+    const pdfBlob = pdf.output("bloburl");
+    const newWindow = window.open(pdfBlob);
+    if (newWindow) newWindow.onload = () => newWindow.print();
+    setProcessing(false);
   };
 
   return (
     <div className="portfolio">
-      {/* ===== Page 1 ===== */}
+      {}
       <section className="pdf-page page1 container">
         <div className="profile-area">
-          {/* 왼쪽: 인적사항 */}
           <div className="profile-left">
-            <p className="job-title">성장하는 개발자</p>
+            <p className="job-title">풀스택 & C++/C# 개발자</p>
             <h1 className="name">이정재</h1>
 
             <div className="info-table">
@@ -101,7 +112,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 오른쪽: 프로필 이미지 */}
           <div className="profile-right">
             <div className="profile-img-wrapper">
               <img
@@ -114,7 +124,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ===== 핵심역량 ===== */}
+        {}
         <div className="section">
           <h2>핵심역량</h2>
           <hr />
@@ -125,7 +135,7 @@ export default function Home() {
           </ul>
         </div>
 
-        {/* ===== 기술스택 ===== */}
+        {}
         <div className="section">
           <h2>기술스택</h2>
           <hr />
@@ -140,20 +150,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ===== 학력 ===== */}
+        {}
         <div className="section">
           <h2>학력</h2>
           <hr />
           <div className="grid-row">
             <div className="col left">2021. 2 ~ 2026. 2</div>
             <div className="col center">인하공업전문대학</div>
-            <div className="col right">
-              컴퓨터정보과(졸업 예정) | 학점 3.9 / 4.5
-            </div>
+            <div className="col right">컴퓨터정보과(졸업 예정) | 학점 3.9 / 4.5</div>
           </div>
         </div>
 
-        {/* ===== 자격증 ===== */}
+        {}
         <div className="section">
           <h2>자격증</h2>
           <hr />
@@ -179,7 +187,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* ===== 병역 ===== */}
+        {}
         <div className="section">
           <h2>병역</h2>
           <hr />
@@ -190,7 +198,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== Page 2 ===== */}
+      {}
       <section className="pdf-page page2 container">
         <h2>자기소개서</h2>
         <hr />
@@ -238,14 +246,21 @@ export default function Home() {
         </p>
       </section>
 
-      <button
-        className="pdf-download-btn"
-        type="button"
-        onClick={handleDownloadPDF}
-        disabled={downloading}
-      >
-        {downloading ? "저장 중..." : "PDF로 저장하기"}
-      </button>
+      {}
+      <div className={`fab-container ${showMenu ? "open" : ""}`}>
+        <button
+          className="fab-main"
+          onClick={() => setShowMenu((prev) => !prev)}
+          disabled={processing}
+        >
+          {processing ? "..." : showMenu ? "닫기" : "PDF"}
+        </button>
+
+        <div className="fab-options">
+          <button onClick={handleSavePDF}>저장</button>
+          <button onClick={handlePrintPDF}>인쇄</button>
+        </div>
+      </div>
     </div>
   );
 }

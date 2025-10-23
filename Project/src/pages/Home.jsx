@@ -70,7 +70,7 @@ export default function Home() {
 
   return (
     <div className="portfolio">
-      {}
+      
       <section className="pdf-page page1 container">
         <div className="profile-area">
           <div className="profile-left">
@@ -124,7 +124,7 @@ export default function Home() {
           </div>
         </div>
 
-        {}
+        
         <div className="section">
           <h2>핵심역량</h2>
           <hr />
@@ -135,22 +135,21 @@ export default function Home() {
           </ul>
         </div>
 
-        {}
+        
         <div className="section">
           <h2>기술스택</h2>
           <hr />
-          <div className="skill-row">
-            <span>Next.js</span>
-            <span>React</span>
-            <span>TypeScript</span>
-            <span>JavaScript</span>
-            <span>C++</span>
-            <span>C#</span>
-            <span>Docker</span>
-          </div>
+<div className="skill-row">
+  <span>Next.js <strong class="level high">상</strong></span>
+  <span>React <strong class="level mid">중</strong></span>
+  <span>JavaScript <strong class="level mid">중</strong></span>
+  <span>C++ <strong class="level mid">중</strong></span>
+  <span>C# <strong class="level mid">중</strong></span>
+  <span>Docker <strong class="level low">하</strong></span>
+</div>
         </div>
 
-        {}
+        
         <div className="section">
           <h2>학력</h2>
           <hr />
@@ -161,7 +160,7 @@ export default function Home() {
           </div>
         </div>
 
-        {}
+        
         <div className="section">
           <h2>자격증</h2>
           <hr />
@@ -187,7 +186,7 @@ export default function Home() {
           </div>
         </div>
 
-        {}
+        
         <div className="section">
           <h2>병역</h2>
           <hr />
@@ -198,7 +197,7 @@ export default function Home() {
         </div>
       </section>
 
-      {}
+      
       <section className="pdf-page page2 container">
         <h2>자기소개서</h2>
         <hr />
@@ -246,7 +245,7 @@ export default function Home() {
         </p>
       </section>
 
-      {}
+      
       <div className={`fab-container ${showMenu ? "open" : ""}`}>
         <button
           className="fab-main"

@@ -326,6 +326,22 @@
   }
 }
 
+.skill-row strong.level {
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.level.high {
+  color: #00b894;
+}
+
+.level.mid {
+  color: #0984e3;
+}
+
+.level.low {
+  color: #636e72;
+}
 
 @media print {
   .fab-container,

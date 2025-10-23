@@ -8,11 +8,11 @@ import project5 from "/project/project5.png";
 export default function Projects() {
   return (
     <div className="projects-container">
-      {}
+      
       <section className="projects-section">
         <h2>웹 프로젝트</h2>
         <div className="projects-grid">
-          {}
+          
           <article className="projects-card">
             <div className="projects-thumb">
               <img src={project1} alt="암기 학습 사이트 미리보기" />
@@ -45,7 +45,7 @@ export default function Projects() {
             </div>
           </article>
 
-          {}
+          
           <article className="projects-card">
             <div className="projects-thumb">
               <img src={project2} alt="개발자 커뮤니티 미리보기" />
@@ -78,11 +78,11 @@ export default function Projects() {
         </div>
       </section>
 
-      {}
+      
       <section className="projects-section">
         <h2>게임 프로젝트</h2>
         <div className="projects-grid">
-          {}
+          
           <article className="projects-card">
             <div className="projects-thumb">
               <img src={project3} alt="호러게임 미리보기" />
@@ -115,7 +115,7 @@ export default function Projects() {
             </div>
           </article>
 
-          {}
+          
           <article className="projects-card">
             <div className="projects-thumb">
               <img src={project4} alt="2D 검 강화하기 미리보기" />
@@ -148,7 +148,7 @@ export default function Projects() {
         </div>
       </section>
 
-      {}
+      
       <section className="projects-section">
         <h2>프로그램 프로젝트</h2>
         <div className="projects-grid">

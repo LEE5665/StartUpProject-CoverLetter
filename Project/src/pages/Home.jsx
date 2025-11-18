@@ -5,10 +5,15 @@ import profile from "/profile.png";
 import { FiMail, FiPhone, FiMapPin, FiGithub } from "react-icons/fi";
 import "./Home.css";
 
+import project1 from "/project1.png";
+import project2 from "/project2.png";
+import project3 from "/project3.png";
+import project4 from "/project4.png";
+import project5 from "/project5.png";
+
 export default function Home() {
-  const [processing, setProcessing] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
   const [horizontalImage, setHorizontalImage] = useState(true);
+  const [printing, setPrinting] = useState(false);
 
   useEffect(() => {
     const image = document.getElementById("profile-img");
@@ -50,27 +55,26 @@ export default function Home() {
     return pdf;
   };
 
-  const handleSavePDF = async () => {
-    setShowMenu(false);
-    setProcessing(true);
-    const pdf = await generatePDF();
-    pdf.save("이정재_이력서_포트폴리오.pdf");
-    setProcessing(false);
-  };
-
   const handlePrintPDF = async () => {
-    setShowMenu(false);
-    setProcessing(true);
+    setPrinting(true);
+
     const pdf = await generatePDF();
     const pdfBlob = pdf.output("bloburl");
     const newWindow = window.open(pdfBlob);
-    if (newWindow) newWindow.onload = () => newWindow.print();
-    setProcessing(false);
+
+    if (newWindow) {
+      newWindow.onload = () => {
+        newWindow.print();
+        setPrinting(false);
+      };
+    } else {
+      setPrinting(false);
+    }
   };
 
   return (
     <div className="portfolio">
-      
+
       <section className="pdf-page page1 container">
         <div className="profile-area">
           <div className="profile-left">
@@ -124,7 +128,6 @@ export default function Home() {
           </div>
         </div>
 
-        
         <div className="section">
           <h2>핵심역량</h2>
           <hr />
@@ -135,21 +138,19 @@ export default function Home() {
           </ul>
         </div>
 
-        
         <div className="section">
           <h2>기술스택</h2>
           <hr />
-<div className="skill-row">
-  <span>Next.js <strong class="level high">상</strong></span>
-  <span>React <strong class="level mid">중</strong></span>
-  <span>JavaScript <strong class="level mid">중</strong></span>
-  <span>C++ <strong class="level mid">중</strong></span>
-  <span>C# <strong class="level mid">중</strong></span>
-  <span>Docker <strong class="level low">하</strong></span>
-</div>
+          <div className="skill-row">
+            <span>Next.js <strong className="level high">상</strong></span>
+            <span>React <strong className="level mid">중</strong></span>
+            <span>JavaScript <strong className="level mid">중</strong></span>
+            <span>C++ <strong className="level mid">중</strong></span>
+            <span>C# <strong className="level mid">중</strong></span>
+            <span>Docker <strong className="level low">중</strong></span>
+          </div>
         </div>
 
-        
         <div className="section">
           <h2>학력</h2>
           <hr />
@@ -160,7 +161,6 @@ export default function Home() {
           </div>
         </div>
 
-        
         <div className="section">
           <h2>자격증</h2>
           <hr />
@@ -186,7 +186,6 @@ export default function Home() {
           </div>
         </div>
 
-        
         <div className="section">
           <h2>병역</h2>
           <hr />
@@ -197,7 +196,6 @@ export default function Home() {
         </div>
       </section>
 
-      
       <section className="pdf-page page2 container">
         <h2>자기소개서</h2>
         <hr />
@@ -244,21 +242,58 @@ export default function Home() {
           팀과 함께 더 나은 서비스를 만들어가는 것이 제 목표입니다.
         </p>
       </section>
-
-      
-      <div className={`fab-container ${showMenu ? "open" : ""}`}>
-        <button
-          className="fab-main"
-          onClick={() => setShowMenu((prev) => !prev)}
-          disabled={processing}
-        >
-          {processing ? "..." : showMenu ? "닫기" : "PDF"}
-        </button>
-
-        <div className="fab-options">
-          <button onClick={handleSavePDF}>저장</button>
-          <button onClick={handlePrintPDF}>인쇄</button>
+      <section className="pdf-page page3 container">
+        <h2>프로젝트 요약</h2>
+        <hr />
+        <div className="proj-summary-link-box">
+          전체 프로젝트 보기 :{" "}
+          <a
+            href="https://lee5665.github.io/StartUpProject-CoverLetter/projects"
+            target="_blank"
+            rel="noreferrer"
+          >
+            https://lee5665.github.io/StartUpProject-CoverLetter/projects
+          </a>
         </div>
+        <div className="proj-summary-grid">
+          <div className="proj-item">
+            <img src={project1} alt="퀴즈 사이트" />
+            <h4>암기 · 학습 퀴즈 사이트</h4>
+            <p>Next.js + MariaDB 기반의 학습 퀴즈 웹 서비스</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project2} alt="개발자 커뮤니티" />
+            <h4>개발자 커뮤니티 사이트</h4>
+            <p>회원가입, 게시글, 이미지 업로드 지원 커뮤니티 플랫폼</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project3} alt="3D 공포게임" />
+            <h4>3D 멀티 공포게임</h4>
+            <p>언리얼 엔진 기반의 멀티플레이 공포 게임</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project4} alt="2D 검 강화 게임" />
+            <h4>2D 검 강화하기</h4>
+            <p>Unity 기반의 2D 강화형 캐주얼 게임</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project5} alt="Java Swing 일정 앱" />
+            <h4>자바 스윙 일정 관리 앱</h4>
+            <p>Swing 기반 일정 관리 + Todo + 다크모드 지원 앱</p>
+          </div>
+        </div>
+        <br></br>
+        <br></br>
+
+      </section>
+      <div className="fab-container">
+        <button className="fab-main" onClick={handlePrintPDF} disabled={printing}>
+          {printing ? "인쇄 중..." : "인쇄하기"}
+        </button>
       </div>
     </div>
   );

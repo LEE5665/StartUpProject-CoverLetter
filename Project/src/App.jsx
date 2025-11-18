@@ -7,7 +7,13 @@ export default function App() {
     <>
       <header className="site-header">
         <nav className="layout-container nav">
-          <Link className="logo" to="/">Home</Link>
+          <Link
+            className="logo"
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            Home
+          </Link>
           <ul className="menu">
             <li><NavLink to="/" end>소개</NavLink></li>
             <li><NavLink to="/projects">프로젝트</NavLink></li>

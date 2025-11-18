@@ -147,7 +147,7 @@ export default function Home() {
             <span>JavaScript <strong className="level mid">중</strong></span>
             <span>C++ <strong className="level mid">중</strong></span>
             <span>C# <strong className="level mid">중</strong></span>
-            <span>Docker <strong className="level low">중</strong></span>
+            <span>Docker <strong className="level mid">중</strong></span>
           </div>
         </div>
 

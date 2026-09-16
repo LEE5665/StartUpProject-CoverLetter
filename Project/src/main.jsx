@@ -7,10 +7,8 @@ import {
 } from 'react-router-dom'
 import App from "./App";
 import Home from "./pages/Home";
-import Skills from "./pages/Skills";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-import About from './pages/t-About'
 // import Project from './pages/Projects'
 
 const router = createBrowserRouter(

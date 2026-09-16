@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import profile from "/profile.png";
@@ -15,59 +15,56 @@ export default function Home() {
   const [horizontalImage, setHorizontalImage] = useState(true);
   const [printing, setPrinting] = useState(false);
 
-  useEffect(() => {
-    const image = document.getElementById("profile-img");
-    if (!image) return;
-
-    const detectRatio = (img) => {
-      const { naturalWidth, naturalHeight } = img;
-      setHorizontalImage(naturalWidth >= naturalHeight);
-    };
-
-    if (image.complete) detectRatio(image);
-    else image.onload = () => detectRatio(image);
-  }, []);
-
   const generatePDF = async () => {
-    document.querySelectorAll(".pdf-page").forEach((page) =>
-      page.classList.add("pdf-export")
-    );
     const pages = document.querySelectorAll(".pdf-page");
     const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+
+    await document.fonts.ready;
 
     for (let i = 0; i < pages.length; i++) {
       const canvas = await html2canvas(pages[i], {
         scale: 3,
         backgroundColor: "#ffffff",
         useCORS: true,
+        windowWidth: 1200,
+        onclone: (clonedDocument) => {
+          clonedDocument.querySelectorAll(".pdf-page").forEach((page) => {
+            page.classList.add("pdf-export");
+          });
+        },
       });
       const imgData = canvas.toDataURL("image/png");
       const pageWidth = pdf.internal.pageSize.getWidth();
-      const imgHeight = (canvas.height * pageWidth) / canvas.width;
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const ratio = Math.min(pageWidth / canvas.width, pageHeight / canvas.height);
+      const imgWidth = canvas.width * ratio;
+      const imgHeight = canvas.height * ratio;
       if (i > 0) pdf.addPage();
-      pdf.addImage(imgData, "PNG", 0, 0, pageWidth, imgHeight);
+      pdf.addImage(imgData, "PNG", (pageWidth - imgWidth) / 2, 0, imgWidth, imgHeight);
     }
-
-    document.querySelectorAll(".pdf-page").forEach((page) =>
-      page.classList.remove("pdf-export")
-    );
 
     return pdf;
   };
 
   const handlePrintPDF = async () => {
+    if (printing) return;
+    const newWindow = window.open("", "_blank");
+    if (!newWindow) {
+      window.alert("인쇄 창을 열 수 없습니다. 팝업 차단을 해제한 뒤 다시 시도해 주세요.");
+      return;
+    }
     setPrinting(true);
 
-    const pdf = await generatePDF();
-    const pdfBlob = pdf.output("bloburl");
-    const newWindow = window.open(pdfBlob);
-
-    if (newWindow) {
-      newWindow.onload = () => {
-        newWindow.print();
-        setPrinting(false);
-      };
-    } else {
+    try {
+      const pdf = await generatePDF();
+      if (newWindow.closed) return;
+      pdf.autoPrint();
+      newWindow.location.replace(pdf.output("bloburl"));
+    } catch (error) {
+      newWindow.close();
+      console.error("PDF 인쇄 실패:", error);
+      window.alert("PDF를 생성하지 못했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
       setPrinting(false);
     }
   };
@@ -122,6 +119,10 @@ export default function Home() {
                 id="profile-img"
                 src={profile}
                 alt="프로필 사진"
+                onLoad={(event) => {
+                  const { naturalWidth, naturalHeight } = event.currentTarget;
+                  setHorizontalImage(naturalWidth >= naturalHeight);
+                }}
                 className={horizontalImage ? "horizontal" : "vertical"}
               />
             </div>

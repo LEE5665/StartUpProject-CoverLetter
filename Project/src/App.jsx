@@ -6,13 +6,14 @@ export default function App() {
   return (
     <>
       <header className="site-header">
-        <nav className="layout-container nav">
+        <nav className="layout-container nav" aria-label="주 메뉴">
           <Link
             className="logo"
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Home
+            <span className="logo-mark">J.</span>
+            <span>이정재<span className="logo-caption">DEVELOPER PORTFOLIO</span></span>
           </Link>
           <ul className="menu">
             <li><NavLink to="/" end>소개</NavLink></li>
@@ -29,7 +30,8 @@ export default function App() {
 
       <footer className="site-footer">
         <div className="layout-container">
-          © {new Date().getFullYear()}
+          <span>이정재 <span className="footer-role">· Developer Portfolio</span></span>
+          <span>© {new Date().getFullYear()}</span>
         </div>
       </footer>
     </>

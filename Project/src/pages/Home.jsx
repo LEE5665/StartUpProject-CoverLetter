@@ -2,7 +2,8 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import profile from "/profile.png";
-import { FiMail, FiPhone, FiMapPin, FiGithub } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiGithub, FiPrinter, FiArrowUpRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 import project1 from "/project1.png";
@@ -10,6 +11,7 @@ import project2 from "/project2.png";
 import project3 from "/project3.png";
 import project4 from "/project4.png";
 import project5 from "/project5.png";
+import project6 from "/project6.png";
 
 export default function Home() {
   const [horizontalImage, setHorizontalImage] = useState(true);
@@ -71,12 +73,18 @@ export default function Home() {
 
   return (
     <div className="portfolio">
-
+      <div className="page-intro">
+        <p className="eyebrow">ABOUT ME</p>
+        <h1>호기심으로 시작해,<br />코드로 완성합니다<span className="accent-dot">.</span></h1>
+        <p className="intro-description">웹부터 게임까지, 직접 만들고 해결하며 성장하는 개발자 이정재입니다.</p>
+        <Link className="text-link" to="/projects">프로젝트 둘러보기 <FiArrowUpRight aria-hidden="true" /></Link>
+      </div>
       <section className="pdf-page page1 container">
+        <p className="eyebrow">01 / PROFILE</p>
         <div className="profile-area">
           <div className="profile-left">
             <p className="job-title">풀스택 & C++/C# 개발자</p>
-            <h1 className="name">이정재</h1>
+            <h2 className="name">이정재</h2>
 
             <div className="info-table">
               <div className="info-row">
@@ -156,9 +164,14 @@ export default function Home() {
           <h2>학력</h2>
           <hr />
           <div className="grid-row">
-            <div className="col left">2021. 2 ~ 2026. 2</div>
+            <div className="col left">2021.03 ~ 2026.02</div>
             <div className="col center">인하공업전문대학</div>
-            <div className="col right">컴퓨터정보과(졸업 예정) | 학점 3.9 / 4.5</div>
+            <div className="col right">컴퓨터정보과 | 학점 3.96 / 4.5</div>
+          </div>
+          <div className="grid-row">
+            <div className="col left">2026.08 학사학위 취득</div>
+            <div className="col center">학점은행제</div>
+            <div className="col right">컴퓨터공학 | 학점 4.39 / 4.5</div>
           </div>
         </div>
 
@@ -166,8 +179,13 @@ export default function Home() {
           <h2>자격증</h2>
           <hr />
           <div className="grid-row">
-            <div className="col left">2024.12.11</div>
-            <div className="col center">정보처리산업기사</div>
+            <div className="col left">2026.09.11</div>
+            <div className="col center">정보처리기사</div>
+            <div className="col right">한국산업인력공단</div>
+          </div>
+          <div className="grid-row">
+            <div className="col left">2026.09.11</div>
+            <div className="col center">사무자동화산업기사</div>
             <div className="col right">한국산업인력공단</div>
           </div>
           <div className="grid-row">
@@ -198,15 +216,16 @@ export default function Home() {
       </section>
 
       <section className="pdf-page page2 container">
+        <p className="eyebrow">02 / MY STORY</p>
         <h2>자기소개서</h2>
         <hr />
 
         <h3>성장 배경</h3>
         <p>
-          중학교 시절, 마인크래프트 서버를 운영하며 직접 플러그인을 제작해본 경험이 개발의 시작이었습니다.
-          단순히 게임을 즐기는 것을 넘어, “이 기능은 어떻게 만들어질까?”라는 호기심으로 코드를 분석하고
-          다양한 자료를 참고하며 기능을 추가해 나갔습니다. 이러한 경험을 통해 개발이 단순한 취미를 넘어,
-          스스로 아이디어를 구현할 수 있는 창의적인 도구라는 사실을 깨달았습니다.
+          개발에 대한 관심은 중학생 시절 직접 게임 서버를 운영하며 필요한 기능을 구현해 본 경험에서 시작되었습니다.
+          기존 기능을 사용하는 데 그치지 않고, “이 기능은 어떻게 동작할까?”라는 호기심으로 코드를 분석하고 자료를
+          찾아보며 직접 기능을 추가했습니다. 이 과정에서 개발은 단순히 코드를 작성하는 일이 아니라, 아이디어를 실제로
+          구현할 수 있는 도구라는 점에 매력을 느꼈습니다.
         </p>
         <p>
           이후 C#과 C++을 활용한 게임 프로젝트를 진행하면서 예상치 못한 문제들을 직접 디버깅하고,
@@ -244,6 +263,7 @@ export default function Home() {
         </p>
       </section>
       <section className="pdf-page page3 container">
+        <p className="eyebrow">03 / SELECTED WORK</p>
         <h2>프로젝트 요약</h2>
         <hr />
         <div className="proj-summary-link-box">
@@ -258,41 +278,46 @@ export default function Home() {
         </div>
         <div className="proj-summary-grid">
           <div className="proj-item">
-            <img src={project1} alt="퀴즈 사이트" />
+            <img src={project1} alt="개발자 블로그" />
+            <h4>개발자 블로그</h4>
+            <p>글 편집·임시저장, 친구 간 채팅과 실시간 알림을 지원하는 개발 기록 공유 플랫폼</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project2} alt="퀴즈 사이트" />
             <h4>암기 · 학습 퀴즈 사이트</h4>
             <p>Next.js + MariaDB 기반의 학습 퀴즈 웹 서비스</p>
           </div>
 
           <div className="proj-item">
-            <img src={project2} alt="개발자 커뮤니티" />
+            <img src={project3} alt="개발자 커뮤니티" />
             <h4>개발자 커뮤니티 사이트</h4>
             <p>회원가입, 게시글, 이미지 업로드 지원 커뮤니티 플랫폼</p>
           </div>
 
           <div className="proj-item">
-            <img src={project3} alt="3D 공포게임" />
+            <img src={project4} alt="3D 공포게임" />
             <h4>3D 멀티 공포게임</h4>
             <p>언리얼 엔진 기반의 멀티플레이 공포 게임</p>
           </div>
 
           <div className="proj-item">
-            <img src={project4} alt="2D 검 강화 게임" />
+            <img src={project5} alt="2D 검 강화 게임" />
             <h4>2D 검 강화하기</h4>
             <p>Unity 기반의 2D 강화형 캐주얼 게임</p>
           </div>
 
           <div className="proj-item">
-            <img src={project5} alt="Java Swing 일정 앱" />
+            <img src={project6} alt="Java Swing 일정 앱" />
             <h4>자바 스윙 일정 관리 앱</h4>
             <p>Swing 기반 일정 관리 + Todo + 다크모드 지원 앱</p>
           </div>
         </div>
-        <br></br>
-        <br></br>
 
       </section>
       <div className="fab-container">
-        <button className="fab-main" onClick={handlePrintPDF} disabled={printing}>
+        <button className="fab-main" onClick={handlePrintPDF} disabled={printing} aria-busy={printing}>
+          <FiPrinter aria-hidden="true" />
           {printing ? "인쇄 중..." : "인쇄하기"}
         </button>
       </div>

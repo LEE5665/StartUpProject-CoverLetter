@@ -4,18 +4,57 @@ import project2 from "/project2.png";
 import project3 from "/project3.png";
 import project4 from "/project4.png";
 import project5 from "/project5.png";
+import project6 from "/project6.png";
 
 export default function Projects() {
   return (
     <div className="projects-container">
+      <div className="page-intro">
+        <p className="eyebrow">SELECTED WORK</p>
+        <h1>배움을 결과물로<span className="accent-dot">.</span></h1>
+        <p className="intro-description">웹 서비스, 게임, 데스크톱 앱까지. 직접 고민하고 구현한 프로젝트를 소개합니다.</p>
+        <div className="project-index"><span>01 웹 서비스</span><span>02 게임</span><span>03 프로그램</span></div>
+      </div>
       
       <section className="projects-section">
         <h2>웹 프로젝트</h2>
         <div className="projects-grid">
+          <article className="projects-card">
+            <div className="projects-thumb">
+              <img src={project1} alt="개발자 블로그 미리보기" />
+            </div>
+            <div className="projects-content">
+              <h3>개발자 블로그</h3>
+              <p>
+                Next.js와 PostgreSQL 기반의 개발 기록 공유 플랫폼. Tiptap 글 편집기,
+                임시저장, 태그, 댓글·좋아요, 친구 간 1:1 채팅과 Redis·SSE 기반 실시간 알림 구현.
+              </p>
+              <p className="projects-role">
+                <strong>맡은 역할:</strong> 전체
+              </p>
+              <div className="projects-tags">
+                <span className="projects-tag">Next.js</span>
+                <span className="projects-tag">TypeScript</span>
+                <span className="projects-tag">PostgreSQL</span>
+                <span className="projects-tag">Redis</span>
+                <span className="projects-tag">Docker</span>
+              </div>
+            </div>
+            <div className="projects-card-actions">
+              <a
+                className="projects-link"
+                href="https://github.com/LEE5665/Developer-Blog"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GIT
+              </a>
+            </div>
+          </article>
           
           <article className="projects-card">
             <div className="projects-thumb">
-              <img src={project1} alt="암기 학습 사이트 미리보기" />
+              <img src={project2} alt="암기 학습 사이트 미리보기" />
             </div>
             <div className="projects-content">
               <h3>암기·학습 퀴즈 사이트</h3>
@@ -48,7 +87,7 @@ export default function Projects() {
           
           <article className="projects-card">
             <div className="projects-thumb">
-              <img src={project2} alt="개발자 커뮤니티 미리보기" />
+              <img src={project3} alt="개발자 커뮤니티 미리보기" />
             </div>
             <div className="projects-content">
               <h3>개발자 커뮤니티 사이트</h3>
@@ -85,7 +124,7 @@ export default function Projects() {
           
           <article className="projects-card">
             <div className="projects-thumb">
-              <img src={project3} alt="호러게임 미리보기" />
+              <img src={project4} alt="호러게임 미리보기" />
             </div>
             <div className="projects-content">
               <h3>3D 멀티 공포게임</h3>
@@ -118,7 +157,7 @@ export default function Projects() {
           
           <article className="projects-card">
             <div className="projects-thumb">
-              <img src={project4} alt="2D 검 강화하기 미리보기" />
+              <img src={project5} alt="2D 검 강화하기 미리보기" />
             </div>
             <div className="projects-content">
               <h3>2D 검 강화하기</h3>
@@ -154,7 +193,7 @@ export default function Projects() {
         <div className="projects-grid">
           <article className="projects-card">
             <div className="projects-thumb">
-              <img src={project5} alt="Java Swing 일정 관리 앱 미리보기" />
+              <img src={project6} alt="Java Swing 일정 관리 앱 미리보기" />
             </div>
             <div className="projects-content">
               <h3>자바 스윙 일정 관리 앱</h3>

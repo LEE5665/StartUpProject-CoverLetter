@@ -12,6 +12,8 @@ import project3 from "/project3.png";
 import project4 from "/project4.png";
 import project5 from "/project5.png";
 import project6 from "/project6.png";
+import project7 from "/project7.png";
+import project8 from "/project8.png";
 
 export default function Home() {
   const [horizontalImage, setHorizontalImage] = useState(true);
@@ -277,40 +279,53 @@ export default function Home() {
           </a>
         </div>
         <div className="proj-summary-grid">
+
           <div className="proj-item">
-            <img src={project1} alt="개발자 블로그" />
+            <img src={project1} alt="티켓 예매 사이트" />
+            <h4>티켓 예매 사이트</h4>
+            <p>공연 검색·좌석 선택·토스 테스트 결제를 지원하고 Redis 분산 락으로 중복 예매를 방지하는 웹서비스</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project2} alt="개발자 블로그" />
             <h4>개발자 블로그</h4>
             <p>글 편집·임시저장, 친구 간 채팅과 실시간 알림을 지원하는 개발 기록 공유 플랫폼</p>
           </div>
 
           <div className="proj-item">
-            <img src={project2} alt="퀴즈 사이트" />
+            <img src={project3} alt="퀴즈 사이트" />
             <h4>암기 · 학습 퀴즈 사이트</h4>
             <p>Next.js + MariaDB 기반의 학습 퀴즈 웹 서비스</p>
           </div>
 
           <div className="proj-item">
-            <img src={project3} alt="개발자 커뮤니티" />
+            <img src={project4} alt="개발자 커뮤니티" />
             <h4>개발자 커뮤니티 사이트</h4>
             <p>회원가입, 게시글, 이미지 업로드 지원 커뮤니티 플랫폼</p>
           </div>
 
           <div className="proj-item">
-            <img src={project4} alt="3D 공포게임" />
+            <img src={project5} alt="3D 공포게임" />
             <h4>3D 멀티 공포게임</h4>
             <p>언리얼 엔진 기반의 멀티플레이 공포 게임</p>
           </div>
 
           <div className="proj-item">
-            <img src={project5} alt="2D 검 강화 게임" />
+            <img src={project6} alt="2D 검 강화 게임" />
             <h4>2D 검 강화하기</h4>
             <p>Unity 기반의 2D 강화형 캐주얼 게임</p>
           </div>
 
           <div className="proj-item">
-            <img src={project6} alt="Java Swing 일정 앱" />
+            <img src={project7} alt="Java Swing 일정 앱" />
             <h4>자바 스윙 일정 관리 앱</h4>
             <p>Swing 기반 일정 관리 + Todo + 다크모드 지원 앱</p>
+          </div>
+
+          <div className="proj-item">
+            <img src={project8} alt="병원 예약 및 업무 관리 프로그램" />
+            <h4>병원 예약 및 업무 관리 프로그램</h4>
+            <p>WPF + Spring Boot + PostgreSQL 기반의 환자 등록·예약·접수·진료·수납 관리 프로그램</p>
           </div>
         </div>
 
